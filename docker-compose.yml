@@ -2,6 +2,10 @@ version: '3'
 services:
   mysql:
     image: mysql:5.7
+   # stdin_open: true
+    #stdin_open: true # docker run -i
+    #tty: true # docker run -t
+    #restart: "no"
     ports:
       - 3306:3306
     environment:
@@ -9,9 +13,9 @@ services:
       - MYSQL_DATABASE=tSeriesDB
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
+    working_dir: /app
     volumes:
-      - mysql_data:/var/lib/mysql
-
+      - .:/app
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -21,5 +25,3 @@ services:
     depends_on:
       - mysql
 
-volumes:
-  mysql_data:
