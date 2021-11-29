@@ -14,7 +14,7 @@ docker network create red_interna
     docker-compose up
 ```
 
-2. Ingresamos a la terminal del mysql:
+2. Ingresamos a la terminal de mysql:
 
 ```
  docker exec -it iot-platform_mysql_1 bash
