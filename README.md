@@ -2,7 +2,7 @@
 
 ----
 ## Creación de red interna
-1. Creamos una red interna para que los servicios puedan comunicarse entre si:
+1. Creamos una red interna para que los servicios puedan comunicarse entre sí:
 ```
 docker network create red_interna
 ```
