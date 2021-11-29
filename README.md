@@ -1,9 +1,14 @@
 # IOT-Platform
 
 ----
+## Creación de red interna
+1. Creamos una red interna para que los servicios puedan comunicarse entre si:
+```
+docker network create red_interna
+```
 
 ## Ejecucion
-1. Iniciamos el container:
+2. Iniciamos el container:
 
 ```
     docker-compose up
@@ -38,9 +43,6 @@ CREATE TABLE thingData (
 
 ![Estructura de tabla](/images/Estructura_mysql.png)
 
-3. Creamos una red local para que los servicios puedan comunicarse entre si:
+3. Para exportar el flow de Node-RED:
 
-```
-docker network create red_local
-```
-
+![Exportar flow de Node-RED](/images/export.png)

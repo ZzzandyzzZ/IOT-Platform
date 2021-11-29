@@ -2,6 +2,10 @@ version: '3'
 services:
   mysql:
     image: mysql:5.7
+   # stdin_open: true
+    #stdin_open: true # docker run -i
+    #tty: true # docker run -t
+    #restart: "no"
     ports:
       - 3306:3306
     environment:
@@ -12,11 +16,10 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
-      - 8080:80
+      - 8083:80
     environment:
       - PMA_HOST=mysql
     depends_on:
@@ -35,17 +38,3 @@ networks:
     external:
       name: red_interna
 
-  node-red:
-    image: nodered/node-red:latest
-    ports:
-      - "1880:1880"
-
-  mosquitto:
-    image: eclipse-mosquitto:1.6
-    ports:
-      - "1883:1883"
-
-networks:
-  default:
-    external:
-      name: red_local
