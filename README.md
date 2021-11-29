@@ -38,5 +38,9 @@ CREATE TABLE thingData (
 
 ![Estructura de tabla](/images/Estructura_mysql.png)
 
+3. Creamos una red local para que los servicios puedan comunicarse entre si:
 
+```
+docker network create red_local
+```
 
