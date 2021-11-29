@@ -21,6 +21,19 @@ services:
       - PMA_HOST=mysql
     depends_on:
       - mysql
+  node-red:
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+  mosquitto:
+    image: eclipse-mosquitto:1.6
+    ports:
+      - "9001:9001"
+      - "1883:1883"
+networks:
+  default:
+    external:
+      name: red_interna
 
   node-red:
     image: nodered/node-red:latest
