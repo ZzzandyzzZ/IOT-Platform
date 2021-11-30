@@ -39,7 +39,7 @@ CREATE TABLE thingData (
     deleted binary(1)
 );
 ```
-* Podemos comprobar si se creo correctamente en [phpmyadmin](localhost:8080) (usuario:**user**, contraseña:**password**) . Ingresando a la estructura de la tabla thingData, veremos lo siguiete:
+* Podemos comprobar si se creo correctamente en [phpmyadmin](localhost:8080) (usuario:**user**, contraseña:**password**) . Ingresando a la estructura de la tabla thingData, veremos lo siguiente:
 
 ![Estructura de tabla](/images/Estructura_mysql.png)
 
