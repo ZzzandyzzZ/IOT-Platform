@@ -43,6 +43,11 @@ CREATE TABLE thingData (
 
 ![Estructura de tabla](/images/Estructura_mysql.png)
 
-3. Para exportar el flow de Node-RED:
+3. Agregar modulo mysql en Node-RED, en settings->palette->Install->mysql
+
+4. Importar JSON con ctrl+i y copiar archivo flows.json
+
+# Para exportar el flow de Node-RED:
 
 ![Exportar flow de Node-RED](/images/export.png)
+
