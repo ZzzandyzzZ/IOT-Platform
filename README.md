@@ -50,4 +50,3 @@ CREATE TABLE thingData (
 # Para exportar el flow de Node-RED:
 
 ![Exportar flow de Node-RED](/images/export.png)
-
