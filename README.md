@@ -1,5 +1,11 @@
 # IOT-Platform
 
+## Integrantes:
+
+- Eduardo Sanchez Hincho
+- Andy Gianpiero Ñaca Rodriguez
+- Luis Villanueva Flores
+
 ----
 ## Creación de red interna
 1. Creamos una red interna para que los servicios puedan comunicarse entre sí:
