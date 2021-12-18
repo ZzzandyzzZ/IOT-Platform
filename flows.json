@@ -23,6 +23,14 @@
         "env": []
     },
     {
+        "id": "bb9d3d161d13271a",
+        "type": "tab",
+        "label": "Flow 10",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "563c353bcceee96c",
         "type": "tab",
         "label": "Flow 4",
@@ -34,6 +42,14 @@
         "id": "a48d69456a33e68d",
         "type": "tab",
         "label": "Flow 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "020b11d0b7f7e07e",
+        "type": "tab",
+        "label": "Flow 11",
         "disabled": false,
         "info": "",
         "env": []
@@ -335,6 +351,167 @@
         "x": 760,
         "y": 300,
         "wires": []
+    },
+    {
+        "id": "4fc23838e5bbaa30",
+        "type": "mqtt in",
+        "z": "bb9d3d161d13271a",
+        "name": "listen_everything",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "4e5150821b28b59a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 100,
+        "wires": [
+            [
+                "eab24f870e94bd0a",
+                "3b5defdc4d738bb8"
+            ]
+        ]
+    },
+    {
+        "id": "3b5defdc4d738bb8",
+        "type": "function",
+        "z": "bb9d3d161d13271a",
+        "name": "create query",
+        "func": "msg.action = \"enable\";\nmsg.topic = \"UPDATE ruleEngine\" +\n\" SET active=1\" +\n\" WHERE\" +\n\" id=\" + msg.req.params.id + \";\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 60,
+        "wires": [
+            [
+                "c223bdb9458af152"
+            ]
+        ]
+    },
+    {
+        "id": "eab24f870e94bd0a",
+        "type": "function",
+        "z": "bb9d3d161d13271a",
+        "name": "search rules",
+        "func": "msg.topic = \"SELECT * FROM ruleEngine\" +\n\" WHERE\" +\n\" ('\" + msg.topic + \"' LIKE topicPattern)\" +\n\" AND\" +\n\" ('\" + msg.payload + \"' LIKE payloadPattern)\" +\n\" AND active=1\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "032aefc54102c2ba"
+            ]
+        ]
+    },
+    {
+        "id": "c223bdb9458af152",
+        "type": "mysql",
+        "z": "bb9d3d161d13271a",
+        "mydb": "e3bac82c62f7412e",
+        "name": "",
+        "x": 440,
+        "y": 60,
+        "wires": [
+            [
+                "e4502897bda28c01"
+            ]
+        ]
+    },
+    {
+        "id": "032aefc54102c2ba",
+        "type": "mysql",
+        "z": "bb9d3d161d13271a",
+        "mydb": "e3bac82c62f7412e",
+        "name": "",
+        "x": 440,
+        "y": 160,
+        "wires": [
+            [
+                "6c849fc41c30afe5"
+            ]
+        ]
+    },
+    {
+        "id": "e4502897bda28c01",
+        "type": "debug",
+        "z": "bb9d3d161d13271a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7fac7f01b1b193b0",
+        "type": "debug",
+        "z": "bb9d3d161d13271a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "6c849fc41c30afe5",
+        "type": "function",
+        "z": "bb9d3d161d13271a",
+        "name": "call webhook",
+        "func": "if(msg.payload.length !== 0)\n{\nfor(var i = 0; i < msg.payload.length; i++)\n{\nmsg.method = msg.payload[i].method;\nmsg.url = msg.payload[i].webHook;\nnode.send([msg]);\n}\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "f02d11089a5b9e80"
+            ]
+        ]
+    },
+    {
+        "id": "f02d11089a5b9e80",
+        "type": "http request",
+        "z": "bb9d3d161d13271a",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "7fac7f01b1b193b0"
+            ]
+        ]
     },
     {
         "id": "c8192fad1ef993db",

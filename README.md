@@ -49,6 +49,18 @@ CREATE TABLE thingData (
 
 ![Estructura de tabla](/images/Estructura_mysql.png)
 
+* Creamos la tabla ruleEngine:
+
+CREATE TABLE ruleEngine (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ruleName varchar(255),
+    active binary(1),
+    topicPattern varchar(1024),
+    payloadPattern varchar(2048),
+    method varchar(7),
+    webHook varchar(1024)
+);
+
 3. Agregar modulo mysql en Node-RED, en settings->palette->Install->mysql
 
 4. Importar JSON con ctrl+i y copiar archivo flows.json
