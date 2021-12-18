@@ -51,6 +51,7 @@ CREATE TABLE thingData (
 
 * Creamos la tabla ruleEngine:
 
+```
 CREATE TABLE ruleEngine (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     ruleName varchar(255),
@@ -60,6 +61,7 @@ CREATE TABLE ruleEngine (
     method varchar(7),
     webHook varchar(1024)
 );
+```
 
 3. Agregar modulo mysql en Node-RED, en settings->palette->Install->mysql
 
